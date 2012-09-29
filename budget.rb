@@ -38,47 +38,39 @@ def round(number,cash=true)
 end
 
 #main function
-def calculateBudget()
+# What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other.
+# Start date of budget in the format yyyy, mm, dd
+# End date of budget in the format yyyy, mm, dd
+# Money total in budget
+# Money left in budget
+def calculate_budget budget, date_start, date_end, money_total, money_left
 	#budget
-	puts "What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other."
-	print "Meal plan: "
-	budget_current = gets.chomp
-	if budget_current == "10"
-		budget_current = $m10plus
+	case budget
+	when :10
+		budget = $m10plus
 		budget_custom = false
-	elsif budget_current == "12"
-		budget_current = $m12plus
+	when :12
+		budget = $m12plus
 		budget_custom = false
-	elsif budget_current == "14"
-		budget_current = $m14plus
+	when :14
+		budget = $m14plus
 		budget_custom = false
 	else
 		budget_custom = true
 	end
 	#inputs
 	if budget_custom
-		print "Start date of budget in the format yyyy, mm, dd: "
-		date_start_input = gets.chomp
-		date_start = Date.strptime("{#{date_start_input}}", "{ %Y, %m, %d }")
-		print "End date of budget in the format yyyy, mm, dd: "
-		date_end_input = gets.chomp
-		date_end = Date.strptime("{#{date_end_input}}", "{ %Y, %m, %d }")
-		print "Money total in budget: $"
-		money_total = gets.chomp.to_f
-		print "Money left in budget: $"
-		money_left = gets.chomp.to_f
+		date_start = Date.strptime("{#{date_start}}", "{ %Y, %m, %d }")
+		date_end = Date.strptime("{#{date_end}}", "{ %Y, %m, %d }")
 	else
 		date_start = budget_current.date_start
 		date_end = budget_current.date_end
 		money_total = budget_current.money_total
-		print "Money left in budget: $"
-		money_left = gets.chomp.to_f
 	end
 	#calculations
 	days_left = date_end - Date.today
 	money_daily = money_left/days_left
 	#ouputs
-	puts ""
 	puts "USAGE"
 	puts "Time: day #{(Date.today-date_start).to_i.to_s} of #{(date_end-date_start).to_i.to_s} (#{round((((Date.today-date_start).to_f)/((date_end-date_start).to_f))*100,false)}%)"
 	puts "Spent: #{round(money_total-money_left)} of #{round(money_total)} (#{round(((money_total-money_left)/money_total)*100,false)}%), or #{round((money_total-money_left)/(Date.today-date_start))} daily"
@@ -93,4 +85,4 @@ $m10plus = Budget.new($q20111.date_start,$q20111.date_end,400.0)
 $m12plus = Budget.new($q20111.date_start,$q20111.date_end,249.0)
 $m14plus = Budget.new($q20111.date_start,$q20111.date_end,97.0)
 
-calculateBudget()
+calculateBudget
