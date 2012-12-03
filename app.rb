@@ -5,7 +5,7 @@ class RDC < Sinatra::Base
 	# Pages
 
 	get '/' do
-		erb :'index'
+		erb :index
 	end
 
 	# Redirects
