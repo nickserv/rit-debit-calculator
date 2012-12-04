@@ -1,0 +1,3 @@
+:m10plus = Budget.new($q20111.date_start,$q20111.date_end,400.0)
+:m12plus = Budget.new($q20111.date_start,$q20111.date_end,249.0)
+:m14plus = Budget.new($q20111.date_start,$q20111.date_end,97.0)

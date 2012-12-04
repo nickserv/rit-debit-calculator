@@ -1,0 +1,1 @@
+:q20111 = Quarter.new(Date.new(2011,9,5),Date.new(2011,11,18))
