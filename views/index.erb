@@ -17,7 +17,6 @@
 
 <!-- main column -->
 <div class="container-fluid" id="main-column">
-	<div id="title">RIT Meal Debit Calculator</div>
 	<div id="links">
 		<a href="https://eservices.rit.edu/eServices/login.do" target="blank">RIT Meal Debit Display</a>
 		&nbsp;&nbsp;&nbsp;
@@ -25,27 +24,42 @@
 	</div><br>
 	<div id="ui">
 
-		<div id="form">
-			Meal Plan:
-			<select id="meal_plan">
-				<option value="alldebit">All Debit</option>
-				<option value="10plus">10 Plus</option>
-				<option value="12plus">12 Plus</option>
-				<option value="14plus">14 Plus</option>
-				<option value="ultra">Ultra</option>
-				<option value="custom">Custom</option>
-			</select><br>
-		
-			Debit Left:
-			<input type="number" size="7" id="date_start"><br>
+		<form>
 
-			<input type="submit" id="submit" value="submit"><br><br>
-		</div>
+			<legend>RIT Meal Debit Calculator</legend>
+
+			<label>Meal Plan</label>
+			<label class="radio inline">
+				<input type="radio" name="meal_plan" value="all_debit" checked> All Debit
+			</label>
+			<label class="radio inline">
+				<input type="radio" name="meal_plan" value="10_plus"> 10 Plus
+			</label>
+			<label class="radio inline">
+				<input type="radio" name="meal_plan" value="12_plus"> 12 Plus
+			</label>
+			<label class="radio inline">
+				<input type="radio" name="meal_plan" value="14_plus"> 14 Plus
+			</label>
+			<label class="radio inline">
+				<input type="radio" name="meal_plan" value="ultra"> Ultra
+			</label>
+			<label class="radio inline">
+				<input type="radio" name="meal_plan" value="custom"> Custom
+			</label>
+			<br>
+
+			Debit Left:
+			<input type="number" size="7"  placeholder="Type something…">
+			<span class="help-block">Example block-level help text here.</span>
+			<button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
 
 		<div id="display"></div>
 		
 	</div><br>
-	<div id="disclaimer">This service is not affiliated with RIT. That being said, feel free to email me with feedback at <a href="mailto:thenickperson@gmail.com">thenickperson@gmail.com</a>.</div>
+	<footer>This service is not affiliated with RIT. That being said, feel free to email me with feedback at <a href="mailto:thenickperson@gmail.com">thenickperson@gmail.com</a>.</footer>
 </div>
 
 <!-- scripts -->
