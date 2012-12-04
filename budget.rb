@@ -46,13 +46,13 @@ end
 def calculate_budget budget, date_start, date_end, money_total, money_left
 	#budget
 	case budget
-	when :10
+	when 10
 		budget = $m10plus
 		budget_custom = false
-	when :12
+	when 12
 		budget = $m12plus
 		budget_custom = false
-	when :14
+	when 14
 		budget = $m14plus
 		budget_custom = false
 	else
@@ -85,4 +85,4 @@ $m10plus = Budget.new($q20111.date_start,$q20111.date_end,400.0)
 $m12plus = Budget.new($q20111.date_start,$q20111.date_end,249.0)
 $m14plus = Budget.new($q20111.date_start,$q20111.date_end,97.0)
 
-calculateBudget
+calculate_budget
