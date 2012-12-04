@@ -1,5 +1,5 @@
 # Set up site
-require './app'
+require './lib/app'
 
 # Run site
 run RDC
