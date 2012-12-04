@@ -3,8 +3,8 @@
 # RIT meal plans: http://finweb.rit.edu/diningservices/mealplans/1112/resident.html
 
 #requirements
-require "date"
-#STDOUT.flush uncomment this if things screw up
+require 'date'
+#STDOUT.flush #uncomment this if things screw up
 
 #classes
 class Quarter
@@ -14,6 +14,7 @@ class Quarter
 		@date_end = date_end
 	end
 end
+
 class Budget
 	attr_accessor :date_start, :date_end, :money_total
 	def initialize(date_start,date_end,money_total)
@@ -25,7 +26,7 @@ end
 
 def round(number,cash=true)
 	if cash
-		return "$"+((number*10**2).round.to_f/10**2).to_s
+		return "$#{((number*10**2).round.to_f/10**2).to_s}"
 	else
 		return ((number*10**2).round.to_f/10**2).to_s
 	end
@@ -65,11 +66,11 @@ def calculate_budget budget, date_start, date_end, money_total, money_left
 	days_left = date_end - Date.today
 	money_daily = money_left/days_left
 	#ouputs
-	puts "USAGE"
+	puts 'USAGE'
 	puts "Time: day #{(Date.today-date_start).to_i.to_s} of #{(date_end-date_start).to_i.to_s} (#{round((((Date.today-date_start).to_f)/((date_end-date_start).to_f))*100,false)}%)"
 	puts "Spent: #{round(money_total-money_left)} of #{round(money_total)} (#{round(((money_total-money_left)/money_total)*100,false)}%), or #{round((money_total-money_left)/(Date.today-date_start))} daily"
-	puts ""
-	puts "RECOMMENDATIONS"
+	puts
+	puts 'RECOMMENDATIONS'
 	puts "Spend #{round(money_daily)} daily (#{round(money_daily*7)} weekly)."
 end
 
