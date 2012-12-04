@@ -2,12 +2,6 @@
 # RIT debit display: https://eservices.rit.edu/eServices/login.do
 # RIT meal plans: http://finweb.rit.edu/diningservices/mealplans/1112/resident.html
 
-# TODO
-# clean code
-# make sure date differences aren't 1 off (test with small date ranges)
-# make sure custom budget works
-# mess around with the text display
-
 #requirements
 require "date"
 #STDOUT.flush uncomment this if things screw up
@@ -78,11 +72,5 @@ def calculate_budget budget, date_start, date_end, money_total, money_left
 	puts "RECOMMENDATIONS"
 	puts "Spend #{round(money_daily)} daily (#{round(money_daily*7)} weekly)."
 end
-
-#data
-$q20111 = Quarter.new(Date.new(2011,9,5),Date.new(2011,11,18))
-$m10plus = Budget.new($q20111.date_start,$q20111.date_end,400.0)
-$m12plus = Budget.new($q20111.date_start,$q20111.date_end,249.0)
-$m14plus = Budget.new($q20111.date_start,$q20111.date_end,97.0)
 
 calculate_budget
