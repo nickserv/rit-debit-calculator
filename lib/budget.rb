@@ -65,13 +65,27 @@ def calculate_budget budget, date_start, date_end, money_total, money_left
 	#calculations
 	days_left = date_end - Date.today
 	money_daily = money_left/days_left
-	#ouputs
-	puts 'USAGE'
-	puts "Time: day #{(Date.today-date_start).to_i.to_s} of #{(date_end-date_start).to_i.to_s} (#{round((((Date.today-date_start).to_f)/((date_end-date_start).to_f))*100,false)}%)"
-	puts "Spent: #{round(money_total-money_left)} of #{round(money_total)} (#{round(((money_total-money_left)/money_total)*100,false)}%), or #{round((money_total-money_left)/(Date.today-date_start))} daily"
-	puts
-	puts 'RECOMMENDATIONS'
-	puts "Spend #{round(money_daily)} daily (#{round(money_daily*7)} weekly)."
+	{
+		:day_passed => (Date.today-date_start).to_i.to_s,
+		:day_total => (date_end-date_start).to_i.to_s,
+		:day_percent => round((((Date.today-date_start).to_f)/((date_end-date_start).to_f))*100,false),
+		:spent_amount => round(money_total-money_left),
+		:spent_total => round(money_total),
+		:spent_percent => round(((money_total-money_left)/money_total)*100,false),
+		:spent_daily => round((money_total-money_left)/(Date.today-date_start)),
+		:recommended_daily_spending => round(money_daily),
+		:recommended_weekly_spending => round(money_daily*7)
+	}
 end
 
-calculate_budget
+def display_budget
+	results = calculate_budget
+	puts 'USAGE'
+	puts "Time: day #{results[:day_passed]} of #{results[:day_total]} (#{results[:day_passed_percent]}%)"
+	puts "Spent: #{results[:spent_amount]} of #{results[:spent_total]} (#{results[:spent_percent]}%), or #{results[:spent_daily]} daily"
+	puts
+	puts 'RECOMMENDATIONS'
+	puts "Spend #{results[:recommended_daily_spending]} daily (#{results[:recommended_weekly_spending]} weekly)."
+end
+
+display_budget
