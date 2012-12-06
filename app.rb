@@ -15,6 +15,3 @@ class RDC < Sinatra::Base
 	end
 
 end
-
-# Only run it when called as `ruby your_app_file.rb`
-RDC.run! if $0 == __FILE__
