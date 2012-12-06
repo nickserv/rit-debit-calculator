@@ -34,34 +34,21 @@ end
 
 #main function
 # What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other.
-# Start date of budget in the format yyyy, mm, dd
-# End date of budget in the format yyyy, mm, dd
-# Money total in budget
 # Money left in budget
-def calculate_budget budget, date_start, date_end, money_total, money_left
+def calculate_budget budget, money_left
 	#budget
 	case budget
 	when 10
 		budget = $m10plus
-		budget_custom = false
 	when 12
 		budget = $m12plus
-		budget_custom = false
 	when 14
 		budget = $m14plus
-		budget_custom = false
-	else
-		budget_custom = true
 	end
 	#inputs
-	if budget_custom
-		date_start = Date.strptime("{#{date_start}}", "{ %Y, %m, %d }")
-		date_end = Date.strptime("{#{date_end}}", "{ %Y, %m, %d }")
-	else
-		date_start = budget_current.date_start
-		date_end = budget_current.date_end
-		money_total = budget_current.money_total
-	end
+	date_start = budget.date_start
+	date_end = budget.date_end
+	money_total = budget.money_total
 	#calculations
 	days_left = date_end - Date.today
 	money_daily = money_left/days_left
