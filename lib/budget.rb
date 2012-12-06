@@ -7,24 +7,6 @@ require 'date'
 require 'yaml'
 #STDOUT.flush #uncomment this if things screw up
 
-#classes
-class Quarter
-	attr_accessor :date_start, :date_end
-	def initialize(date_start,date_end)
-		@date_start = date_start
-		@date_end = date_end
-	end
-end
-
-class Budget
-	attr_accessor :date_start, :date_end, :money_total
-	def initialize(date_start,date_end,money_total)
-		@date_start = date_start
-		@date_end = date_end
-		@money_total = money_total
-	end
-end
-
 def round(number)
 	(number*10**2).round.to_f/10**2
 end
