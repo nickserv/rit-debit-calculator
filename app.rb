@@ -45,16 +45,6 @@ class RDC < Sinatra::Base
 		}
 	end
 
-	def display_budget plan, money_left
-		results = calculate_budget plan, money_left
-		puts 'USAGE'
-		puts "Time: day #{results[:day_passed]} of #{results[:day_total]} (#{results[:day_passed_percent]}%)"
-		puts "Spent: #{results[:spent_amount]} of #{results[:spent_total]} (#{results[:spent_percent]}%), or #{results[:spent_daily]} daily"
-		puts
-		puts 'RECOMMENDATIONS'
-		puts "Spend #{results[:recommended_daily_spending]} daily (#{results[:recommended_weekly_spending]} weekly)."
-	end
-
 	# Pages
 	get('/') { erb :index }
 
