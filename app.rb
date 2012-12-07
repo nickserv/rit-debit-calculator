@@ -9,7 +9,7 @@ require 'yaml'
 
 class RDC < Sinatra::Base
 
-	def round(number)
+	def round number
 		(number*10**2).round.to_f/10**2
 	end
 
@@ -56,15 +56,9 @@ class RDC < Sinatra::Base
 	end
 
 	# Pages
-
-	get '/' do
-		erb :index
-	end
+	get('/') { erb :index }
 
 	# Redirects
-
-	get '/index.html' do
-		redirect '/', 301
-	end
+	get('/index.html') { redirect '/', 301 }
 
 end
