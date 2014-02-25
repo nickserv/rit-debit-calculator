@@ -1,4 +1,4 @@
-# RIT Meal Plan Budget Calculator by Nicolas McCurdy (http://thenickperson.com)
+# RIT Meal Plan Budget Calculator by Nicolas McCurdy (http://nicolasmccurdy.github.io)
 # RIT debit display: https://eservices.rit.edu/eServices/login.do
 # RIT meal plans: http://finweb.rit.edu/diningservices/mealplans/1112/resident.html
 
