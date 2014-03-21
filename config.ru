@@ -2,4 +2,4 @@
 require './app'
 
 # Run site
-run RDC
+run DebitCalculator

@@ -7,7 +7,7 @@ require 'date'
 require 'yaml'
 #STDOUT.flush #uncomment this if things screw up
 
-class RDC < Sinatra::Base
+class DebitCalculator < Sinatra::Base
 
 	def round number
 		(number*10**2).round.to_f/10**2
