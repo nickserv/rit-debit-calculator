@@ -58,11 +58,11 @@
 
     <div id="display">
       <h2>Usage</h2>
-      Time: day <%=results[:day_passed]%> of <%=results[:day_total]%> (<%=results[:day_passed_percent]%>%)
-      Spent: <%=results[:spent_amount]%> of <%=results[:spent_total]%> (<%=results[:spent_percent]%>%), or <%=results[:spent_daily]%> daily
-      
+      Time: day <%=@results[:day_passed]%> of <%=@results[:day_total]%> (<%=@results[:day_passed_percent]%>%)
+      Spent: <%=@results[:spent_amount]%> of <%=@results[:spent_total]%> (<%=@results[:spent_percent]%>%), or <%=@results[:spent_daily]%> daily
+        
       <h2>Recommendations</h2>
-      Spend <%=results[:recommended_daily_spending]%> daily (<%=results[:recommended_weekly_spending]%> weekly).
+      Spend <%=@results[:recommended_daily_spending]%> daily (<%=@results[:recommended_weekly_spending]%> weekly).
     </div>
     
   </div><br>

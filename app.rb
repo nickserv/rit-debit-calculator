@@ -48,9 +48,9 @@ class DebitCalculator < Sinatra::Base
   # Pages
   get '/' do
     if request['meal_plan'] && request['money_left']
-      results = calculate_budget(request['meal_plan'], request['money_left'].to_i)
+      @results = calculate_budget(request['meal_plan'], request['money_left'].to_i)
     end
-    erb :index, locals: { results: results }
+    erb :index
   end
 
   # Redirects
