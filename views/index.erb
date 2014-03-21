@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8">
-	<!-- basic info -->
-	<title>RIT Debit Calculator</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- css -->
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
-	<link rel="stylesheet" href="/css/styles.css">
-	<!-- icons -->
-	<link rel="icon" href="/img/favicon.png">
-	<link rel="apple-touch-icon" href="/mobile_icon.png">
+  <!-- basic info -->
+  <title>RIT Debit Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- css -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- icons -->
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="apple-touch-icon" href="/mobile_icon.png">
 </head>
 
 <body>
 
 <!-- main column -->
 <div class="container-fluid" id="main-column">
-	<div id="links">
-		<a href="https://eservices.rit.edu/eServices/login.do" target="blank">RIT Meal Debit Display</a>
-		&nbsp;&nbsp;&nbsp;
-		<a href="http://finweb.rit.edu/diningservices/mealplans/1112/resident.html" target="_blank">RIT Meal Plans</a>
-	</div><br>
-	<div id="ui">
+  <div id="links">
+    <a href="https://eservices.rit.edu/eServices/login.do" target="blank">RIT Meal Debit Display</a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="http://finweb.rit.edu/diningservices/mealplans/1112/resident.html" target="_blank">RIT Meal Plans</a>
+  </div><br>
+  <div id="ui">
 
-		<form>
+    <form>
 
-			<legend>RIT Meal Debit Calculator</legend>
+      <legend>RIT Meal Debit Calculator</legend>
 
-			<label>Meal Plan</label>
-			<label class="radio inline">
-				<input type="radio" name="meal_plan" value="all_debit" checked> All Debit
-			</label>
-			<label class="radio inline">
-				<input type="radio" name="meal_plan" value="10_plus"> 10 Plus
-			</label>
-			<label class="radio inline">
-				<input type="radio" name="meal_plan" value="12_plus"> 12 Plus
-			</label>
-			<label class="radio inline">
-				<input type="radio" name="meal_plan" value="14_plus"> 14 Plus
-			</label>
-			<label class="radio inline">
-				<input type="radio" name="meal_plan" value="ultra"> Ultra
-			</label>
-			<label class="radio inline">
-				<input type="radio" name="meal_plan" value="custom"> Custom
-			</label>
-			<br>
+      <label>Meal Plan</label>
+      <label class="radio inline">
+        <input type="radio" name="meal_plan" value="all_debit" checked> All Debit
+      </label>
+      <label class="radio inline">
+        <input type="radio" name="meal_plan" value="10_plus"> 10 Plus
+      </label>
+      <label class="radio inline">
+        <input type="radio" name="meal_plan" value="12_plus"> 12 Plus
+      </label>
+      <label class="radio inline">
+        <input type="radio" name="meal_plan" value="14_plus"> 14 Plus
+      </label>
+      <label class="radio inline">
+        <input type="radio" name="meal_plan" value="ultra"> Ultra
+      </label>
+      <label class="radio inline">
+        <input type="radio" name="meal_plan" value="custom"> Custom
+      </label>
+      <br>
 
-			Debit Left:
-			<input type="number" size="7"  placeholder="Type something…">
-			<span class="help-block">Example block-level help text here.</span>
-			<button type="submit" class="btn btn-primary">Submit</button>
+      Debit Left:
+      <input type="number" size="7"  placeholder="Type something…">
+      <span class="help-block">Example block-level help text here.</span>
+      <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
 
-		<div id="display">
-			<h2>Usage</h2>
-			Time: day <%=results[:day_passed]%> of <%=results[:day_total]%> (<%=results[:day_passed_percent]%>%)
-			Spent: <%=results[:spent_amount]%> of <%=results[:spent_total]%> (<%=results[:spent_percent]%>%), or <%=results[:spent_daily]%> daily
-			
-			<h2>Recommendations</h2>
-			Spend <%=results[:recommended_daily_spending]%> daily (<%=results[:recommended_weekly_spending]%> weekly).
-		</div>
-		
-	</div><br>
-	<footer>This service is not affiliated with RIT. That being said, feel free to email me with feedback at <a href="mailto:thenickperson@gmail.com">thenickperson@gmail.com</a>.</footer>
+    <div id="display">
+      <h2>Usage</h2>
+      Time: day <%=results[:day_passed]%> of <%=results[:day_total]%> (<%=results[:day_passed_percent]%>%)
+      Spent: <%=results[:spent_amount]%> of <%=results[:spent_total]%> (<%=results[:spent_percent]%>%), or <%=results[:spent_daily]%> daily
+      
+      <h2>Recommendations</h2>
+      Spend <%=results[:recommended_daily_spending]%> daily (<%=results[:recommended_weekly_spending]%> weekly).
+    </div>
+    
+  </div><br>
+  <footer>This service is not affiliated with RIT. That being said, feel free to email me with feedback at <a href="mailto:thenickperson@gmail.com">thenickperson@gmail.com</a>.</footer>
 </div>
 
 <!-- scripts -->
