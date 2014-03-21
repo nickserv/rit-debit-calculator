@@ -21,7 +21,7 @@ class DebitCalculator < Sinatra::Base
   # What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other.
   # Money left in budget
   def calculate_budget plan, money_left
-    data = YAML.load_file '../data/data.yml'
+    data = YAML.load_file 'data/data.yml'
     quarter = data['quarters']['2012-2']
     money_total = data['plans'][2012][plan]
 
@@ -46,7 +46,12 @@ class DebitCalculator < Sinatra::Base
   end
 
   # Pages
-  get('/') { erb :index }
+  get '/' do
+    if request['meal_plan'] && request['money_left']
+      results = calculate_budget(request['meal_plan'], request['money_left'].to_i)
+    end
+    erb :index, locals: { results: results }
+  end
 
   # Redirects
   get('/index.html') { redirect '/', 301 }
