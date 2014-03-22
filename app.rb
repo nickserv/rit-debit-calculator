@@ -20,13 +20,19 @@ class DebitCalculator < Sinatra::Base
   # What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other.
   # Money left in budget
   def calculate_budget(plan, money_left)
-    data = YAML.load_file 'data.yml'
-    quarter = data['quarters']['2012-2']
-    money_total = data['plans'][2012][plan]
+    if plan.is_a? String
+      data = YAML.load_file 'data.yml'
+      quarter = data['quarters']['2012-2']
+      money_total = data['plans'][2012][plan]
 
-    # inputs
-    date_start = Date.strptime quarter['start'], '%m/%d/%Y'
-    date_end = Date.strptime quarter['end'], '%m/%d/%Y'
+      # inputs
+      date_start = Date.strptime quarter['start'], '%m/%d/%Y'
+      date_end = Date.strptime quarter['end'], '%m/%d/%Y'
+    else
+      date_start = plan[:date_start]
+      date_end = plan[:date_end]
+      money_total = plan[:money_total]
+    end
 
     # calculations
     days_left = date_end - Date.today
@@ -46,7 +52,16 @@ class DebitCalculator < Sinatra::Base
 
   # Pages
   get '/' do
-    if request['meal_plan'] && request['money_left']
+    if request['date_start'] && request['date_end'] && request['money_total'] && request['money_left']
+      plan = {
+        date_start: Date.strptime(request['date_start'], '%Y-%m-%d'),
+        date_end: Date.strptime(request['date_end'], '%Y-%m-%d'),
+        money_total: request['money_total'].to_i
+      }
+      money_left = request['money_left'].to_i
+
+      @results = calculate_budget(plan, money_left)
+    elsif request['meal_plan'] && request['money_left']
       @results = calculate_budget(request['meal_plan'], request['money_left'].to_i)
     end
     erb :index

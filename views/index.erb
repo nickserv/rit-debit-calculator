@@ -13,7 +13,7 @@
 
       <label>Meal Plan</label>
       <label class="radio inline">
-        <input type="radio" name="meal_plan" value="all_debit" checked> All Debit
+        <input type="radio" name="meal_plan" value="all_debit"> All Debit
       </label>
       <label class="radio inline">
         <input type="radio" name="meal_plan" value="10_plus"> 10 Plus
@@ -28,7 +28,16 @@
         <input type="radio" name="meal_plan" value="ultra"> Ultra
       </label>
       <label class="radio inline">
-        <input type="radio" name="meal_plan" value="custom"> Custom
+        <input type="radio" name="meal_plan" value="custom" checked> Custom<br>
+
+        Meal Plan Start:
+        <input type="date" name="date_start"><br>
+
+        Meal Plan End:
+        <input type="date" name="date_end"><br>
+
+        Debit Total:
+        <input type="number" name="money_total" size="7"  placeholder="Type something…"><br>
       </label>
       <br>
 
