@@ -1,7 +1,20 @@
 doctype html
-html
+html(lang='en')
   head
+    meta(charset='utf-8')
+    // basic info
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // css
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootswatch/3.1.1/united/bootstrap.min.css')
+    // icons
+    link(rel='icon', href='/img/favicon.png')
+    link(rel='apple-touch-icon', href='/mobile_icon.png')
   body
     block content
+
+    // scripts
+    script(src='http://code.jquery.com/jquery.min.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    //if lt IE 9
+      script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
