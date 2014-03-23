@@ -37,16 +37,19 @@ function calculateBudget(plan, moneyLeft) {
   }
 
   // calculations
-  var daysLeft = daysBetween(new Date(), dateEnd);
+  var now = new Date();
+  var daysLeft = daysBetween(now, dateEnd);
+  var daysPassed = daysBetween(dateStart, now);
   var moneyDaily = moneyLeft / daysLeft;
+
   return {
-    dayPassed: daysBetween(dateStart, new Date()).toFixed(),
+    dayPassed: daysPassed.toFixed(),
     dayTotal: daysBetween(dateStart, dateEnd).toFixed(),
-    dayPercent: percent(daysBetween(dateStart, new Date()), daysBetween(dateStart, dateEnd)).toFixed(2),
+    dayPercent: percent(daysPassed, daysBetween(dateStart, dateEnd)).toFixed(2),
     spentAmount: (moneyTotal - moneyLeft).toFixed(2),
     spentTotal: parseInt(moneyTotal, 10).toFixed(2),
     spentPercent: percent(moneyTotal - moneyLeft, moneyTotal).toFixed(2),
-    spentDaily: ((moneyTotal - moneyLeft) / daysBetween(dateStart, new Date())).toFixed(2),
+    spentDaily: ((moneyTotal - moneyLeft) / daysPassed).toFixed(2),
     recommendedDailySpending: moneyDaily.toFixed(2),
     recommendedWeeklySpending: (moneyDaily * 7).toFixed(2)
   };
@@ -61,9 +64,8 @@ exports.index = function(req, res){
       dateEnd: new Date(req.query.dateEnd),
       moneyTotal: req.query.moneyTotal
     };
-    var moneyLeft = req.query.moneyLeft;
 
-    results = calculateBudget(plan, moneyLeft);
+    results = calculateBudget(plan, req.query.moneyLeft);
   } else if (req.query.mealPlan && req.query.moneyLeft) {
     results = calculateBudget(req.query.mealPlan, req.query.moneyLeft);
   }
