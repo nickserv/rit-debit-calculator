@@ -9,10 +9,6 @@
 
 var data = require("../data.json");
 
-function round(number) {
-  return Math.round(number * 100) / 100;
-}
-
 function percent(portion, total) {
   return 100 * portion / total;
 }
@@ -42,15 +38,15 @@ function calculate_budget(plan, money_left) {
   var days_left = daysBetween(new Date(), date_end);
   var money_daily = money_left / days_left;
   return {
-    day_passed: daysBetween(date_start, new Date()),
-    day_total: daysBetween(date_start, date_end),
-    day_percent: round(percent(daysBetween(date_start, new Date()), daysBetween(date_start, date_end))),
-    spent_amount: round(money_total - money_left),
-    spent_total: round(money_total),
-    spent_percent: round(percent(money_total - money_left, money_total)),
-    spent_daily: round((money_total - money_left) / daysBetween(date_start, new Date())),
-    recommended_daily_spending: round(money_daily),
-    recommended_weekly_spending: round(money_daily * 7)
+    day_passed: daysBetween(date_start, new Date()).toFixed(),
+    day_total: daysBetween(date_start, date_end).toFixed(),
+    day_percent: percent(daysBetween(date_start, new Date()), daysBetween(date_start, date_end)).toFixed(2),
+    spent_amount: (money_total - money_left).toFixed(2),
+    spent_total: parseInt(money_total, 10).toFixed(2),
+    spent_percent: percent(money_total - money_left, money_total).toFixed(2),
+    spent_daily: ((money_total - money_left) / daysBetween(date_start, new Date())).toFixed(2),
+    recommended_daily_spending: money_daily.toFixed(2),
+    recommended_weekly_spending: (money_daily * 7).toFixed(2)
   };
 }
 
