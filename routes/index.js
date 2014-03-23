@@ -7,8 +7,6 @@
 // RIT debit display: https://eservices.rit.edu/eServices/login.do
 // RIT meal plans: http://finweb.rit.edu/diningservices/mealplans/1112/resident.html
 
-var strptime = require("strptime");
-
 var data = require("../data.json");
 
 function round(number) {
@@ -23,10 +21,6 @@ function daysBetween(a, b) {
   return (b - a) / (1000*60*60*24);
 }
 
-function dateFromString(string) {
-  return strptime(string, '%Y-%m-%d');
-}
-
 // main function
 // What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other.
 // Money left in budget
@@ -36,8 +30,8 @@ function calculate_budget(plan, money_left) {
     var money_total = data.plans["2012"][plan];
 
     // inputs
-    var date_start = dateFromString(quarter.start);
-    var date_end = dateFromString(quarter.end);
+    var date_start = new Date(quarter.start);
+    var date_end = new Date(quarter.end);
   } else {
     var date_start = plan.date_start;
     var date_end = plan.date_end;
@@ -63,8 +57,8 @@ function calculate_budget(plan, money_left) {
 exports.index = function(req, res){
   if (req.query.date_start && req.query.date_end && req.query.money_total && req.query.money_left) {
     var plan = {
-      date_start: dateFromString(req.query.date_start),
-      date_end: dateFromString(req.query.date_end),
+      date_start: new Date(req.query.date_start),
+      date_end: new Date(req.query.date_end),
       money_total: req.query.money_total
     };
     var money_left = req.query.money_left;
