@@ -21,17 +21,19 @@ function daysBetween(a, b) {
 // What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other.
 // Money left in budget
 function calculateBudget(plan, moneyLeft) {
-  if (typeof plan === "String") {
+  var dateStart, dateEnd, moneyTotal;
+
+  if (typeof plan === "string") {
     var quarter = data.quarters["2012-2"];
-    var moneyTotal = data.plans["2012"][plan];
+    moneyTotal = data.plans["2012"][plan];
 
     // inputs
-    var dateStart = new Date(quarter.start);
-    var dateEnd = new Date(quarter.end);
+    dateStart = new Date(quarter.start);
+    dateEnd = new Date(quarter.end);
   } else {
-    var dateStart = plan.dateStart;
-    var dateEnd = plan.dateEnd;
-    var moneyTotal = plan.moneyTotal;
+    dateStart = plan.dateStart;
+    dateEnd = plan.dateEnd;
+    moneyTotal = plan.moneyTotal;
   }
 
   // calculations
@@ -51,6 +53,8 @@ function calculateBudget(plan, moneyLeft) {
 }
 
 exports.index = function(req, res){
+  var results;
+
   if (req.query.dateStart && req.query.dateEnd && req.query.moneyTotal && req.query.moneyLeft) {
     var plan = {
       dateStart: new Date(req.query.dateStart),
@@ -59,9 +63,9 @@ exports.index = function(req, res){
     };
     var moneyLeft = req.query.moneyLeft;
 
-    var results = calculateBudget(plan, moneyLeft);
+    results = calculateBudget(plan, moneyLeft);
   } else if (req.query.mealPlan && req.query.moneyLeft) {
-    var results = calculateBudget(req.query.mealPlan, req.query.moneyLeft);
+    results = calculateBudget(req.query.mealPlan, req.query.moneyLeft);
   }
 
   res.render('index', {
