@@ -64,7 +64,7 @@ class DebitCalculator < Sinatra::Base
     elsif request['meal_plan'] && request['money_left']
       @results = calculate_budget(request['meal_plan'], request['money_left'].to_i)
     end
-    erb :index
+    haml :index
   end
 
   # Redirects

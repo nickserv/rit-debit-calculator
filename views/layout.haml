@@ -1,0 +1,20 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    / basic info
+    %title RIT Debit Calculator
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    / css
+    %link{:href => "//netdna.bootstrapcdn.com/bootswatch/3.1.1/united/bootstrap.min.css", :rel => "stylesheet"}/
+    / icons
+    %link{:href => "/img/favicon.png", :rel => "icon"}/
+    %link{:href => "/mobile_icon.png", :rel => "apple-touch-icon"}/
+
+  %body
+    = yield
+
+    / scripts
+    %script{:src => "http://code.jquery.com/jquery.min.js"}
+    %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}
+    /[if lt IE 9] <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
