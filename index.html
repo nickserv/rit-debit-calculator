@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- basic info-->
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/united/bootstrap.min.css">
+    <!-- icons-->
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/mobile_icon.png">
+  </head>
+  <body ng-app="DebitCalculatorApp">
+    <!-- main column-->
+    <div class="container" ng-controller="CalculatorController">
+      <div class="page-header">
+        <h1>
+          <span style="font-family: Georgia, serif; color: #f36e21;">RIT </span>
+          Debit Calculator
+        </h1>
+        
+        <a href="https://eservices.rit.edu/eServices/login.do" target="blank">RIT Meal Debit Display</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="http://finweb.rit.edu/diningservices/mealplans/1112/resident.html" target="_blank">RIT Meal Plans</a>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Input</h2>
+
+          <form role="form" action="/">
+            <label>Meal Plan</label>
+            <div class="form-group">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="mealPlan" value="alldebit">All Debit
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="mealPlan" value="10plus">10 Plus
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="mealPlan" value="12plus">12 Plus
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="mealPlan" value="14plus">14 Plus
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="mealPlan" value="ultra">Ultra
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="mealPlan" value="custom" checked="">Custom
+                </label>
+
+                <div class="form-group">
+                  <label for="date-start">Meal Plan Start</label>
+                  <input id="date-start" type="date" name="dateStart" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="date-end">Meal Plan End</label>
+                  <input id="date-end" type="date" name="dateEnd" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="money-total">Debit Total</label>
+                  <input id="money-total" type="number" name="moneyTotal" size="7" placeholder="Type something…" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="money-left">Debit Left</label>
+              <input id="money-left" type="number" name="moneyLeft" size="7" placeholder="Type something…" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+
+        <div class="col-md-6" ng-if="results">
+          <h2>Results</h2>
+
+          <h3>Usage</h3>
+          <p>Time: day {{results.dayPassed}} of {{results.dayTotal}} ({{results.dayPassedPercent}}%)</p>
+          <p>Spent: {{results.spentAmount}} of {{results.spentTotal}} ({{results.spentPercent}}%), or {{results.spentDaily}} daily</p>
+
+          <h3>Recommendations</h3>
+          <p>Spend {{results.recommendedDailySpending}} daily ({{results.recommendedWeeklySpending}} weekly).</p>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <footer class="text-muted">
+        This service is not affiliated with RIT. That being said, feel free to email me with feedback at <a href="mailto:thenickperson@gmail.com">thenickperson@gmail.com</a>.
+      </footer>
+    </div>
+
+    <!-- scripts-->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <!--if lt IE 9script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
+    -->
+  </body>
+</html>

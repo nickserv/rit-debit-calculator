@@ -1,13 +1,6 @@
-
-/*
- * GET home page.
- */
-
 // RIT Meal Plan Budget Calculator by Nicolas McCurdy (http://nicolasmccurdy.github.io)
 // RIT debit display: https://eservices.rit.edu/eServices/login.do
 // RIT meal plans: http://finweb.rit.edu/diningservices/mealplans/1112/resident.html
-
-var data = require("../data.json");
 
 function percent(portion, total) {
   return 100 * portion / total;
@@ -20,7 +13,7 @@ function daysBetween(a, b) {
 // main function
 // What is your current RIT meal plan? Type 10, 12, 14, or ultra. If you want to track a budget for something else, type other.
 // Money left in budget
-function calculateBudget(plan, moneyLeft) {
+function calculateBudget(data, plan, moneyLeft) {
   var dateStart, dateEnd, moneyTotal;
 
   if (typeof plan === "string") {
@@ -55,23 +48,29 @@ function calculateBudget(plan, moneyLeft) {
   };
 }
 
-exports.index = function(req, res){
-  var results;
+var app = angular.module("DebitCalculatorApp", []);
 
-  if (req.query.dateStart && req.query.dateEnd && req.query.moneyTotal && req.query.moneyLeft) {
-    var plan = {
-      dateStart: new Date(req.query.dateStart),
-      dateEnd: new Date(req.query.dateEnd),
-      moneyTotal: req.query.moneyTotal
-    };
+app.config(function ($locationProvider) {
+  $locationProvider.html5Mode(true);
+});
 
-    results = calculateBudget(plan, req.query.moneyLeft);
-  } else if (req.query.mealPlan && req.query.moneyLeft) {
-    results = calculateBudget(req.query.mealPlan, req.query.moneyLeft);
-  }
+app.controller("CalculatorController", function ($http, $location, $scope) {
+  $http.get("data.json").then(function (res) {
+    var query = $location.search();
+    var results;
 
-  res.render('index', {
-    title: 'RIT Debit Calculator',
-    results: results
+    if (query.dateStart && query.dateEnd && query.moneyTotal && query.moneyLeft) {
+      var plan = {
+        dateStart: new Date(query.dateStart),
+        dateEnd: new Date(query.dateEnd),
+        moneyTotal: parseInt(query.moneyTotal, 10)
+      };
+
+      results = calculateBudget(res.data, plan, parseInt(query.moneyLeft, 10));
+    } else if (query.mealPlan && query.moneyLeft) {
+      results = calculateBudget(res.data, query.mealPlan, parseInt(query.moneyLeft, 10));
+    }
+
+    $scope.results = results;
   });
-};
+});
