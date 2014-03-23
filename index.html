@@ -34,54 +34,54 @@
             <div class="form-group">
               <div class="radio">
                 <label>
-                  <input type="radio" name="mealPlan" value="alldebit">All Debit
+                  <input type="radio" ng-model="mealPlan" name="mealPlan" value="alldebit" required>All Debit
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="mealPlan" value="10plus">10 Plus
+                  <input type="radio" ng-model="mealPlan" name="mealPlan" value="10plus" required>10 Plus
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="mealPlan" value="12plus">12 Plus
+                  <input type="radio" ng-model="mealPlan" name="mealPlan" value="12plus" required>12 Plus
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="mealPlan" value="14plus">14 Plus
+                  <input type="radio" ng-model="mealPlan" name="mealPlan" value="14plus" required>14 Plus
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="mealPlan" value="ultra">Ultra
+                  <input type="radio" ng-model="mealPlan" name="mealPlan" value="ultra" required>Ultra
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="mealPlan" value="custom" checked="">Custom
+                  <input type="radio" ng-model="mealPlan" name="mealPlan" value="custom" checked required>Custom
                 </label>
 
                 <div class="form-group">
                   <label for="date-start">Meal Plan Start</label>
-                  <input id="date-start" type="date" name="dateStart" class="form-control">
+                  <input id="date-start" type="date" name="dateStart" class="form-control" ng-required="mealPlan == 'custom'">
                 </div>
 
                 <div class="form-group">
                   <label for="date-end">Meal Plan End</label>
-                  <input id="date-end" type="date" name="dateEnd" class="form-control">
+                  <input id="date-end" type="date" name="dateEnd" class="form-control" ng-required="mealPlan == 'custom'">
                 </div>
 
                 <div class="form-group">
                   <label for="money-total">Debit Total</label>
-                  <input id="money-total" type="number" name="moneyTotal" size="7" placeholder="Type something…" class="form-control">
+                  <input id="money-total" type="number" name="moneyTotal" size="7" placeholder="Type something…" class="form-control" ng-required="mealPlan == 'custom'">
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <label for="money-left">Debit Left</label>
-              <input id="money-left" type="number" name="moneyLeft" size="7" placeholder="Type something…" class="form-control">
+              <input id="money-left" type="number" name="moneyLeft" size="7" placeholder="Type something…" class="form-control" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
