@@ -48,7 +48,7 @@ function calculateBudget(data, plan, moneyLeft) {
   };
 }
 
-var app = angular.module("DebitCalculatorApp", []);
+var app = angular.module("debitCalculatorApp", []);
 
 app.config(function ($locationProvider) {
   $locationProvider.html5Mode(true);
